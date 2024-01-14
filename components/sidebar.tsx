@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { cn } from "@/lib/utils"
 import { monserrat } from "@/lib/fonts"
 import { Code, ImageIcon, LayoutDashboard, MessageSquare, Music, Settings, VideoIcon } from "lucide-react"
+import { usePathname } from "next/navigation"
 
 const routes = [
   {
@@ -52,6 +53,8 @@ const routes = [
 ]
 
 export function Sidebar() {
+  const pathname = usePathname()
+
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
       <div className="py-2 px-3 flex-1">
@@ -73,7 +76,10 @@ export function Sidebar() {
         <ul className="space-y-1">
             {
               routes.map( routes => (
-                <Link href={routes.href} key={routes.href} className="text-sm group p-3 flex w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition">
+                <Link href={routes.href} key={routes.href} className={cn(
+                  "text-sm group p-3 flex w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
+                  routes.href === pathname ? "text-white bg-white/10" : 'text-zinc-400'
+                )}>
                   <li className="flex items-center flex-1">
                       <routes.icon 
                         size={24} 
