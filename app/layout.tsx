@@ -5,6 +5,7 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Samu-AI',
   description: 'AI Platform to ',
+  icons: '/logo.svg'
 }
 
 export default function RootLayout({
